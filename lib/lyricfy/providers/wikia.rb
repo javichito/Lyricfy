@@ -10,12 +10,6 @@ module Lyricfy
       self.url = URI.escape(self.base_url + format_parameters)
     end
 
-    def format_parameters
-      artist_name = tilde_to_vocal(self.parameters[:artist_name])
-      song_name = tilde_to_vocal(self.parameters[:song_name])
-      "#{artist_name}:#{song_name}"
-    end
-
     def search
       begin
         html = Nokogiri::HTML(open(url))
@@ -41,6 +35,13 @@ module Lyricfy
       rescue OpenURI::HTTPError
         nil
       end
+    end
+
+    private
+    def format_parameters
+      artist_name = tilde_to_vocal(self.parameters[:artist_name])
+      song_name = tilde_to_vocal(self.parameters[:song_name])
+      "#{artist_name}:#{song_name}"
     end
   end
 end

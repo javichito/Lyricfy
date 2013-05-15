@@ -6,12 +6,6 @@ module Lyricfy
       self.url = URI.escape(self.base_url + format_parameters)
     end
 
-    def format_parameters
-      artist_name = prepare_parameter(self.parameters[:artist_name])
-      song_name = prepare_parameter(self.parameters[:song_name])
-      "#{artist_name}/#{song_name}"
-    end
-
     def search
       begin
         html = Nokogiri::HTML(open(url))
@@ -29,6 +23,13 @@ module Lyricfy
 
     def prepare_parameter(parameter)
       parameter.split(' ').map { |w| w.gsub(/\W/, '') }.join('-')
+    end
+
+    private
+    def format_parameters
+      artist_name = prepare_parameter(self.parameters[:artist_name])
+      song_name = prepare_parameter(self.parameters[:song_name])
+      "#{artist_name}/#{song_name}"
     end
   end
 end
