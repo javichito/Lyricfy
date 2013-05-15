@@ -7,13 +7,17 @@ Gem::Specification.new do |gem|
   gem.name          = "lyricfy"
   gem.version       = Lyricfy::VERSION
   gem.authors       = ["Javier Hidalgo"]
-  gem.email         = ["cooljavy@hotmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.email         = ["hola@soyjavierhidalgo.com"]
+  gem.description   = %q{Song Lyrics for your Ruby apps}
+  gem.summary       = %q{Lyricfy lets you get song lyrics that you can use on your apps}
+  gem.homepage      = "https://github.com/javichito/lyricfy"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+
+  gem.add_runtime_dependency "nokogiri", [">= 1.3.3"]
+
+  gem.add_development_dependency "fakeweb", ["~> 1.3"]
 end
