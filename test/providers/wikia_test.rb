@@ -12,13 +12,9 @@ describe Lyricfy::Wikia do
     describe "404" do
       before :each do
         VCR.use_cassette('wikia_404') do
-          @response = Net::HTTP.get_response(URI('http://lyrics.wikia.com/2pac:life'))
           @provider = Lyricfy::Wikia.new artist_name: '2pac', song_name: 'life'
+          @provider.search
         end
-      end
-
-      it "should return HTTP code 404" do
-        "404".must_equal @response.code
       end
 
       it "should return nil" do
@@ -31,24 +27,20 @@ describe Lyricfy::Wikia do
     describe "200" do
       before do
         VCR.use_cassette('wikia_200') do
-          @response = Net::HTTP.get_response(URI('http://lyrics.wikia.com/2pac:life_goes_on'))
           @provider = Lyricfy::Wikia.new artist_name: '2pac', song_name: 'life_goes_on'
+          @result = @provider.search
         end
-      end
-
-      it "should return HTTP code 200" do
-        "200".must_equal @response.code
       end
 
       it "should remove the ads" do
         VCR.use_cassette('wikia_200') do
-          @provider.search.wont_match /rtMatcher/
+          @result.wont_match /rtMatcher/
         end
       end
 
       it "should remove edit meta" do
         VCR.use_cassette('wikia_200') do
-          @provider.search.wont_match "a[title='LyricWiki:Job Exchange']"
+          @result.wont_match "a[title='LyricWiki:Job Exchange']"
         end
       end
 
