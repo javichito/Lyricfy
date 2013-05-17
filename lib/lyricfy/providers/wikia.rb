@@ -11,8 +11,8 @@ module Lyricfy
     end
 
     def search
-      begin
-        html = Nokogiri::HTML(open(url))
+      if data = super
+        html = Nokogiri::HTML(data)
         lyricbox = html.css('div.lyricbox').first
 
         # Removing ads
@@ -28,12 +28,10 @@ module Lyricfy
         edit_meta.remove if edit_meta
 
         if instrumental
-          ""
+          nil
         else
           lyricbox.children.to_html
         end
-      rescue OpenURI::HTTPError
-        nil
       end
     end
 
