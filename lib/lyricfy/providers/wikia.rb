@@ -1,5 +1,3 @@
-# coding: utf-8
-
 module Lyricfy
   class Wikia < Lyricfy::LyricProvider
     include URIHelper
