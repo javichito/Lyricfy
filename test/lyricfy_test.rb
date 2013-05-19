@@ -21,7 +21,7 @@ describe Lyricfy::Fetcher do
   describe "with valid params" do
     it "should use passed providers" do
       fetcher = Lyricfy::Fetcher.new :metro_lyrics
-      fetcher.providers.shift.must_equal :metro_lyrics
+      fetcher.providers.shift[0].must_equal :metro_lyrics
     end
   end
 
