@@ -31,5 +31,17 @@ describe Lyricfy::Fetcher do
         lambda { @fetcher.search }.must_raise ArgumentError
       end
     end
+
+    describe "with valid params" do
+      describe "lyric not found" do
+        it "should return nil" do
+          fetcher = Lyricfy::Fetcher.new :metro_lyrics
+          VCR.use_cassette('metro_lyrics_404') do
+            result = fetcher.search('2pac', 'kfjawl')
+            result.must_be_nil
+          end
+        end
+      end
+    end
   end
 end
