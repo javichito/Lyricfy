@@ -27,13 +27,15 @@ module Lyricfy
     end
 
     def search(artist, song)
+      result = nil
       @providers.each_pair do |provider, klass|
         fetcher = klass.new(artist_name: artist, song_name: song)
 
         if lyric_body = fetcher.search
-          return OpenStruct.new(artist: artist, song: song, body: lyric_body)
+          result =  OpenStruct.new(artist: artist, song: song, body: lyric_body)
         end
       end
+      result
     end
   end
 end
