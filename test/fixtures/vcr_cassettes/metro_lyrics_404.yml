@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://m.metrolyrics.com/kfjawl-lyrics-2pac
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 19 May 2013 20:16:17 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      X-Powered-By:
+      - PHP/5.4.11-1~dotdeb.0
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/html
+    body:
+      encoding: US-ASCII
+      string: ! "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<title>404 Page Not
+        Found</title>\n<style type=\"text/css\">\n\n::selection{ background-color:
+        #E13300; color: white; }\n::moz-selection{ background-color: #E13300; color:
+        white; }\n::webkit-selection{ background-color: #E13300; color: white; }\n\nbody
+        {\n\tbackground-color: #fff;\n\tmargin: 40px;\n\tfont: 13px/20px normal Helvetica,
+        Arial, sans-serif;\n\tcolor: #4F5155;\n}\n\na {\n\tcolor: #003399;\n\tbackground-color:
+        transparent;\n\tfont-weight: normal;\n}\n\nh1 {\n\tcolor: #444;\n\tbackground-color:
+        transparent;\n\tborder-bottom: 1px solid #D0D0D0;\n\tfont-size: 19px;\n\tfont-weight:
+        normal;\n\tmargin: 0 0 14px 0;\n\tpadding: 14px 15px 10px 15px;\n}\n\ncode
+        {\n\tfont-family: Consolas, Monaco, Courier New, Courier, monospace;\n\tfont-size:
+        12px;\n\tbackground-color: #f9f9f9;\n\tborder: 1px solid #D0D0D0;\n\tcolor:
+        #002166;\n\tdisplay: block;\n\tmargin: 14px 0 14px 0;\n\tpadding: 12px 10px
+        12px 10px;\n}\n\n#container {\n\tmargin: 10px;\n\tborder: 1px solid #D0D0D0;\n\t-webkit-box-shadow:
+        0 0 8px #D0D0D0;\n}\n\np {\n\tmargin: 12px 15px 12px 15px;\n}\n</style>\n</head>\n<body>\n\t<div
+        id=\"container\">\n\t\t<h1>404 Page Not Found</h1>\n\t\t<p>The page you requested
+        was not found.</p>\t</div>\n</body>\n</html>"
+    http_version: 
+  recorded_at: Sun, 19 May 2013 19:22:12 GMT
+recorded_with: VCR 2.4.0
