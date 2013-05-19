@@ -38,12 +38,11 @@ Under the hood, this library fetch the songs lyrics by scraping some websites ca
 
 - [Wikia](http://lyrics.wikia.com/Lyrics_Wiki)
 - [MetroLyrics](http://www.metrolyrics.com/)
-- [LyricsMode](http://www.lyricsmode.com/)
 - [KDLetras](http://kdletras.com/)
 
 By default this gem will recursively search for the lyric on each of the providers, if the lyric is not found it will return nil. You can also tell Lyricfy to only use the provider(s) that you want.
 
-    fetcher = Lyricfy::Fetcher.new(:metro_lyrics, :lyrics_mode)
+    fetcher = Lyricfy::Fetcher.new(:metro_lyrics, :kd_letras)
     lyric = fetcher.search 'Coldplay', 'Viva la vida'
     puts lyric.body.join('\n')
 

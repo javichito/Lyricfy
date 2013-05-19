@@ -5,7 +5,6 @@ require_relative "lyricfy/uri_helper"
 require_relative "lyricfy/lyric_provider"
 require_relative "lyricfy/providers/wikia"
 require_relative "lyricfy/providers/metro_lyrics"
-require_relative "lyricfy/providers/lyrics_mode"
 require_relative "lyricfy/providers/kd_letras"
 
 module Lyricfy
@@ -35,7 +34,6 @@ module Lyricfy
         fetcher = klass.new(artist_name: artist, song_name: song)
 
         if lyric_body = fetcher.search
-          # TODO: Format the lyric_body to output like this [[paragraph1], [paragraph2], ...]
           return OpenStruct.new(artist: artist, song: song, body: lyric_body)
         end
       end
