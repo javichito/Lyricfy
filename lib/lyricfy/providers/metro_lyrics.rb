@@ -11,7 +11,7 @@ module Lyricfy
     def search
       if data =  super
         html = Nokogiri::HTML(data)
-        container = html.css('p.gnlyricsbody').first
+        container = html.css('p.lyricsbody').first || html.css('p.gnlyricsbody').first
         elements = container.children.to_a
         paragraphs = elements.select { |ele| ele.text? }
         paragraphs.map! { |paragraph| paragraph.text.strip.chomp if paragraph.text != "\n" }.reject! { |ele| ele.empty? }
