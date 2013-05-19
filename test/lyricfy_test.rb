@@ -9,8 +9,6 @@ describe Lyricfy::Fetcher do
     it "should use default providers" do
       @fetcher.providers.must_include :wikia
       @fetcher.providers.must_include :metro_lyrics
-      @fetcher.providers.must_include :lyrics_mode
-      @fetcher.providers.must_include :kd_letras
     end
   end
 
@@ -22,9 +20,8 @@ describe Lyricfy::Fetcher do
 
   describe "with valid params" do
     it "should use passed providers" do
-      fetcher = Lyricfy::Fetcher.new :metro_lyrics, :lyrics_mode
-      fetcher.providers.must_include :metro_lyrics
-      fetcher.providers.must_include :lyrics_mode
+      fetcher = Lyricfy::Fetcher.new :metro_lyrics
+      fetcher.providers.shift.must_equal :metro_lyrics
     end
   end
 

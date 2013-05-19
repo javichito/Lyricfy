@@ -5,7 +5,6 @@ require_relative "lyricfy/uri_helper"
 require_relative "lyricfy/lyric_provider"
 require_relative "lyricfy/providers/wikia"
 require_relative "lyricfy/providers/metro_lyrics"
-require_relative "lyricfy/providers/kd_letras"
 
 module Lyricfy
   class Fetcher
@@ -14,9 +13,7 @@ module Lyricfy
     def initialize(*args)
       @providers = {
         wikia: Wikia,
-        metro_lyrics: MetroLyrics,
-        lyrics_mode: LyricsMode,
-        kd_letras: KDLetras
+        metro_lyrics: MetroLyrics
       }
 
       if !args.empty?
