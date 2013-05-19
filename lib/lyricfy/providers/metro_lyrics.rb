@@ -9,26 +9,12 @@ module Lyricfy
     end
 
     def search
-      begin
-        html = Nokogiri::HTML(open(url))
-        lyricbox = html.css('p.lyricsbody').first
-
-        # Removing ads
-        if ads = lyricbox.css('.lyrics-ringtone')
-          ads.each do |matcher|
-            matcher.remove
-          end
-        end
-
-        if credits = lyricbox.css('span')
-          credits.each do |span|
-            span.remove
-          end
-        end
-
-        lyricbox.children.to_html
-      rescue OpenURI::HTTPError
-        nil
+      if data =  super
+        html = Nokogiri::HTML(data)
+        container = html.css('p.gnlyricsbody').first
+        elements = container.children.to_a
+        paragraphs = elements.select { |ele| ele.text? }
+        paragraphs.map! { |paragraph| paragraph.text.strip.chomp if paragraph.text != "\n" }.reject! { |ele| ele.empty? }
       end
     end
 
