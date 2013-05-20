@@ -24,7 +24,7 @@ You need to create an instance of the <code>Lyricfy::Fetcher</code> class and se
 
     fetcher = Lyricfy::Fetcher.new
     lyric = fetcher.search 'Coldplay', 'Viva la vida'
-    puts lyric.body.join('\n')
+    lyric.body.each { |line| puts line }
 
 The <code>Lyricfy::Fetcher#search</code> method returns an OpenStruct object with the following methods:
 
@@ -45,7 +45,7 @@ By default this gem will recursively search for the lyric on each of the provide
 
     fetcher = Lyricfy::Fetcher.new(:metro_lyrics)
     lyric = fetcher.search 'Coldplay', 'Viva la vida'
-    puts lyric.body.join('\n')
+    lyric.body.each { |line| puts line }
 
 In this case Lyricfy will look for the lyric only on [MetroLyrics](http://www.metrolyrics.com/).
 
