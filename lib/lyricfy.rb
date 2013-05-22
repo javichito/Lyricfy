@@ -20,7 +20,7 @@ module Lyricfy
       if !args.empty?
         passed_providers = {}
         args.each do |provider|
-          raise Exception if !@providers.has_key?(provider)
+          raise Exception unless @providers.has_key?(provider)
           passed_providers[provider] = @providers[provider]
         end
         @providers = passed_providers
