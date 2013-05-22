@@ -34,6 +34,7 @@ module Lyricfy
 
         if lyric_body = fetcher.search
           result =  OpenStruct.new(artist: artist, song: song, body: lyric_body)
+          break
         end
       end
       result
