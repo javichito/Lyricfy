@@ -25,7 +25,8 @@ You need to create an instance of the <code>Lyricfy::Fetcher</code> class and se
 
     fetcher = Lyricfy::Fetcher.new
     lyric = fetcher.search 'Coldplay', 'Viva la vida'
-    lyric.body.each { |line| puts line }
+    puts lyric.body # prints lyrics, one line at a time
+    lyric.body.each { |line| puts "#{line}<br/>" } # Iterate over each line
 
 The <code>Lyricfy::Fetcher#search</code> method returns an OpenStruct object with the following methods:
 
