@@ -28,16 +28,20 @@ module Lyricfy
     end
 
     def search(artist, song)
-      result = nil
-      @providers.each_pair do |provider, klass|
-        fetcher = klass.new(artist_name: artist, song_name: song)
+      key = [artist.downcase, song.downcase]
+      @cached_search ||= {}
+      @cached_search.fetch(key) do
+        result = nil
+        @providers.each_pair do |provider, klass|
+          fetcher = klass.new(artist_name: artist, song_name: song)
 
-        if lyric_body = fetcher.search
-          result =  OpenStruct.new(artist: artist, song: song, body: lyric_body)
-          break
+          if lyric_body = fetcher.search
+            result =  OpenStruct.new(artist: artist, song: song, body: lyric_body)
+            break
+          end
         end
+        @cached_search[key] = result
       end
-      result
     end
   end
 end
