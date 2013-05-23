@@ -36,6 +36,9 @@ module Lyricfy
           fetcher = klass.new(artist_name: artist, song_name: song)
 
           if lyric_body = fetcher.search
+            #def lyric_body.to_s
+              #self.join("\n")
+            #end
             result =  OpenStruct.new(artist: artist, song: song, body: lyric_body)
             break
           end
