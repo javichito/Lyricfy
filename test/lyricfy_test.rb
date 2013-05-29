@@ -48,8 +48,8 @@ describe Lyricfy::Fetcher do
           fetcher = Lyricfy::Fetcher.new :metro_lyrics
           VCR.use_cassette('metro_lyrics_200') do
             result = fetcher.search('2pac', 'Life Goes On')
-            result.body.must_be_instance_of Array
-            result.body.to_s.must_include 'Life as a baller'
+            result.lines.must_be_instance_of Array
+            result.body.must_include 'Life as a baller'
           end
         end
       end
