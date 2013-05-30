@@ -50,10 +50,25 @@ Under the hood, this library fetch the song lyrics by scraping some websites cal
 By default this gem will recursively search for the lyric on each of the providers, if the lyric is not found it will return nil. You can also tell Lyricfy to only use the provider(s) that you want.
 
     fetcher = Lyricfy::Fetcher.new(:metro_lyrics)
-    lyric = fetcher.search 'Coldplay', 'Viva la vida'
-    puts lyric.body
+    song = fetcher.search 'Coldplay', 'Viva la vida'
+    puts song.body
 
 In this case Lyricfy will look for the lyric only on [MetroLyrics](http://www.metrolyrics.com/).
+
+## Changelog
+
+v0.1.0
+- Cleaner API
+- Added a <code>Song</code> class
+- Added custom separators for the lyrics
+- Added memoization. Thanks to [@marksim](https://github.com/marksim)
+
+v0.0.2
+- Fixed a small bug inside <code>Lyricfy::Fetcher#search</code>
+- Added some small refactorings
+
+v0.0.1
+- Initial release
 
 ## Contributing
 
