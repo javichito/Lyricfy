@@ -18,7 +18,7 @@ module Lyricfy
         metro_lyrics: MetroLyrics
       }
 
-      if !args.empty?
+      unless args.empty?
         passed_providers = {}
         args.each do |provider|
           raise Exception unless @providers.has_key?(provider)
