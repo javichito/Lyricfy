@@ -4,6 +4,7 @@ Song Lyrics for your Ruby apps.
 
 [![Build Status](https://travis-ci.org/javichito/Lyricfy.png?branch=master)](https://travis-ci.org/javichito/Lyricfy)
 [![Code Climate](https://codeclimate.com/github/javichito/Lyricfy.png)](https://codeclimate.com/github/javichito/Lyricfy)
+[![Gem Version](https://badge.fury.io/rb/lyricfy.png)](http://badge.fury.io/rb/lyricfy)
 
 ## Installation
 
