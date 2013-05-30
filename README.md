@@ -24,21 +24,25 @@ Or install it yourself as:
 You need to create an instance of the <code>Lyricfy::Fetcher</code> class and send the <code>#search</code> message with the artist name and song title respectively. The following example shows the most basic usage.
 
     fetcher = Lyricfy::Fetcher.new
-    lyric = fetcher.search 'Coldplay', 'Viva la vida'
-    puts lyric.body # prints lyrics, one line at a time
-    lyric.body.each { |line| puts "#{line}<br/>" } # Iterate over each line
+    song = fetcher.search 'Coldplay', 'Viva la vida'
+    puts song.body # prints lyrics separated by '\n'
 
-The <code>Lyricfy::Fetcher#search</code> method returns an OpenStruct object with the following methods:
+You can also pass a custom separator to the <code>#body</code> method. For example:
 
-- artist
-- song
+    lyrics.body("<br>") # returns a String with the song lyrics separated by a <br> tag
+
+The <code>Lyricfy::Fetcher#search</code> method returns a <code>Lyricfy::Song</code> object with the following methods:
+
+- title
+- author
+- lines
 - body
 
-Where artist is the artist name, song is the song title and body is an Array of the lyric paragraphs.
+Where title is the song title, author is the song artist, lines is an Array of the lyric paragraphs and body returns a String with the song lyrics separated with <code>\n</code> by default.
 
 ### How does it work?
 
-Under the hood, this library fetch the songs lyrics by scraping some websites called "Providers". The currently supported providers are:
+Under the hood, this library fetch the song lyrics by scraping some websites called "Providers". The currently supported providers are:
 
 - [Wikia](http://lyrics.wikia.com/Lyrics_Wiki)
 - [MetroLyrics](http://www.metrolyrics.com/)
@@ -47,7 +51,7 @@ By default this gem will recursively search for the lyric on each of the provide
 
     fetcher = Lyricfy::Fetcher.new(:metro_lyrics)
     lyric = fetcher.search 'Coldplay', 'Viva la vida'
-    lyric.body.each { |line| puts line }
+    puts lyric.body
 
 In this case Lyricfy will look for the lyric only on [MetroLyrics](http://www.metrolyrics.com/).
 
