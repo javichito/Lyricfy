@@ -26,8 +26,8 @@ describe Lyricfy::Wikia do
         VCR.use_cassette('wikia_200') { @result = provider.search }
       end
 
-      it "should return an Array" do
-        @result.must_be_instance_of Array
+      it "should return a collection" do
+        @result.must_be_kind_of Enumerable
       end
 
       it "should remove all html tags" do
