@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'spec_helper'
 
 describe Lyricfy::Wikia do
   describe "with valid params" do
