@@ -17,9 +17,13 @@ module Lyricfy
 
     private
 
+    def prepare_parameter(parameter)
+      a = parameter.gsub(/\W/, '')
+    end
+
     def format_parameters
-      artist_name = tilde_to_vocal(self.parameters[:artist_name]).gsub(" ", "_")
-      song_name = tilde_to_vocal(self.parameters[:song_name]).gsub(" ", "_")
+      artist_name = prepare_parameter(tilde_to_vocal(self.parameters[:artist_name]).gsub(" ", "_"))
+      song_name = prepare_parameter(tilde_to_vocal(self.parameters[:song_name]).gsub(" ", "_"))
       "#{artist_name}:#{song_name}"
     end
 
