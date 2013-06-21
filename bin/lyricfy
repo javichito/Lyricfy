@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'lyricfy'
+require 'highline/import'
+
+artist  = ask 'Artist? ', String
+title   = ask 'Title? ',  String
+fetcher = Lyricfy::Fetcher.new
+song    = fetcher.search artist, title
+
+if song
+  puts song.lines
+else
+  puts 'Sorry, could not find the requested song'
+end
