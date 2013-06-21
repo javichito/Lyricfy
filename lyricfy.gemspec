@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
+  gem.add_runtime_dependency "highline"
   gem.add_runtime_dependency "nokogiri", [">= 1.3.3"]
 
   gem.add_development_dependency "rake"
