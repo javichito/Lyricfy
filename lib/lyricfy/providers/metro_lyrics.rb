@@ -29,9 +29,11 @@ module Lyricfy
 
     def html_to_array(html)
       container = html.css('p.lyricsbody').first || html.css('p.gnlyricsbody').first
-      elements = container.children.to_a
-      paragraphs = elements.select { |ele| ele.text? }
-      paragraphs.map! { |paragraph| paragraph.text.strip.chomp if paragraph.text != "\n" }.reject! { |ele| ele.empty? }
+      if container
+        elements = container.children.to_a
+        paragraphs = elements.select { |ele| ele.text? }
+        paragraphs.map! { |paragraph| paragraph.text.strip.chomp if paragraph.text != "\n" }.reject! { |ele| ele.empty? }
+      end
     end
   end
 end
