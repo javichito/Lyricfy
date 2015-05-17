@@ -4,7 +4,7 @@ describe Lyricfy::MetroLyrics do
   describe "with valid params" do
     it "should format parameters with hyphen" do
       provider = Lyricfy::MetroLyrics.new artist_name: 'Coldplay', song_name: 'Fix You'
-      provider.send(:format_parameters).must_equal "fix-you-lyrics-coldplay"
+      provider.send(:format_parameters).must_equal "fix-you-lyrics-coldplay.html"
     end
   end
 
