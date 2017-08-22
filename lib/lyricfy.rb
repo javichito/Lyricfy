@@ -7,6 +7,7 @@ require_relative "lyricfy/song"
 require_relative "lyricfy/lyric_provider"
 require_relative "lyricfy/providers/wikia"
 require_relative "lyricfy/providers/metro_lyrics"
+require_relative "lyricfy/providers/musixmatch"
 
 module Lyricfy
   class Fetcher
@@ -15,7 +16,8 @@ module Lyricfy
     def initialize(*args)
       @providers = {
         wikia: Wikia,
-        metro_lyrics: MetroLyrics
+        metro_lyrics: MetroLyrics,
+        musixmatch: Musixmatch
       }
 
       unless args.empty?
