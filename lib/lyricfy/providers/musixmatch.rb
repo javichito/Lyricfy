@@ -9,18 +9,21 @@ module Lyricfy
     end
 
     def search
-      if data = super
-        html = Nokogiri::HTML(data)
-        html_to_array(html)
-      end
+      html = Nokogiri::HTML(open(self.url ).read)
+      html.encoding = 'utf-8'
+      html_to_array(html)
     end
 
     private
 
+    def prepare_parameter(parameter)
+      parameter.downcase.split(' ').join('-')
+    end
+
     def format_parameters
-      artist_name = tilde_to_vocal(self.parameters[:artist_name]).gsub(" ", "-")
-      song_name = tilde_to_vocal(self.parameters[:song_name]).gsub(" ", "-")
-      "#{artist_name}/{song_name}"
+      artist_name = prepare_parameter(self.parameters[:artist_name])
+      song_name = prepare_parameter(self.parameters[:song_name])
+      "lyrics/#{artist_name}/#{song_name}"
     end
 
     def html_to_array(html)
@@ -28,8 +31,8 @@ module Lyricfy
       if containers.any?
         result = []
         container.each do |container|
-          elements = container.children.text.split("\n")
-          result << elements if elements.any?
+          elements = container.children.text.split("\n").reject{|e| e.empty?}
+          result += elements if elements.any?
         end
         result
       end
